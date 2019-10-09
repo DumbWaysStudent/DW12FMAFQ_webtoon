@@ -1,52 +1,52 @@
 import React, { Component } from 'react';
 import { StyleSheet, Image } from 'react-native';
-import { Container, Text, View, Icon, Item, Label, Input, Button } from 'native-base';
+import { Container, Text, View, Icon, Item, Input, Label, Button } from 'native-base';
 
 class Login extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      showPassword: false,
-      validLogin: false,
-      validEmail: true,
+      isShowPassword: false,
+      isValidLogin: false,
+      isValidEmail: true,
       emailValue: '',
       passwordValue: '',
-      userEmail: 'asu@gmail.com',
-      userPassword: 'jiancuk',
+      userEmail: 'aa@a.com',
+      userPassword: 'aa',
     };
   }
 
-  handleEmail = text => {
+  onValidateEmail = text => {
     this.setState({ emailValue: text });
     let reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
     if (reg.test(text) === false) {
-      this.setState({ validEmail: false });
+      this.setState({ isValidEmail: false });
     } else {
-      this.setState({ validEmail: true });
-      if ((this.state.userEmail == text) && (this.state.passwordValue == this.state.userPassword)) {
-        this.setState({ validLogin: true });
+      this.setState({ isValidEmail: true });
+      if ((this.state.userEmail === text) && (this.state.passwordValue === this.state.userPassword)) {
+        this.setState({ isValidLogin: true });
       } else {
-        this.setState({ validLogin: false });
+        this.setState({ isValidLogin: false });
       }
     }
   };
 
-  handlePassword = text => {
+  onValidatePassword = text => {
     this.setState({ passwordValue: text });
-    if ((this.state.emailValue == this.state.userEmail) && (this.state.userPassword == text)) {
-      this.setState({ validLogin: true });
+    if ((this.state.emailValue === this.state.userEmail) && (this.state.userPassword === text)) {
+      this.setState({ isValidLogin: true });
     } else {
-      this.setState({ validLogin: false });
+      this.setState({ isValidLogin: false });
     }
   };
 
-  showPassword = () => {
-    if (this.state.passwordValue != '') {
-      !this.state.showPassword ? this.setState({ showPassword: true }) : this.setState({ showPassword: false });
-      if ((this.state.emailValue == this.state.userEmail) && (this.state.passwordValue == this.state.userPassword)) {
-        this.setState({ validLogin: true });
+  onShowPassword = () => {
+    if (this.state.passwordValue !== '') {
+      !this.state.isShowPassword ? this.setState({ isShowPassword: true }) : this.setState({ isShowPassword: false });
+      if ((this.state.emailValue = this.state.userEmail) && (this.state.passwordValue === this.state.userPassword)) {
+        this.setState({ isValidLogin: true });
       } else {
-        this.setState({ validLogin: false });
+        this.setState({ isValidLogin: false });
       }
     }
   };
@@ -54,40 +54,39 @@ class Login extends Component {
   render() {
     return (
       <Container style={styles.container}>
-        <View style={styles.content}>
-          <Image style={styles.image} source={require('../assets/logo.png')}></Image>
-          <Text style={styles.title}>LOG IN</Text>
-          <Text style={styles.subtitle}>
-            Login with your account WEBTOON
-          </Text>
-          <Item floatingLabel style={[styles.inputEmail, !this.state.validEmail ? styles.textInputError : null]}>
+        <View style={styles.viewContent}>
+          <Image style={styles.logo} source={require('../assets/logo.png')} />
+          <Text style={styles.textTitle}>LOG IN</Text>
+          <Text style={styles.textSubTitle}>Login with your account WEBTOON</Text>
+          <Item floatingLabel style={[styles.itemInput, !this.state.isValidEmail ? styles.textInputError : null]}>
             <Label>Email</Label>
             <Input
               placeholder="Email"
+              keyboardType="email-address"
               autoCapitalize="none"
-              onChangeText={text => this.handleEmail(text)}
+              onChangeText={text => this.onValidateEmail(text)}
               value={this.state.emailValue}
             />
           </Item>
-          <Item floatingLabel style={styles.inputPassword}>
+          <Item floatingLabel style={styles.itemInput2}>
             <Label>Password</Label>
             <Input
               placeholder="Password"
               autoCapitalize="none"
-              secureTextEntry={!this.state.showPassword ? true : false}
-              onChangeText={text => this.handlePassword(text)}
+              secureTextEntry={!this.state.isShowPassword ? true : false}
+              onChangeText={text => this.onValidatePassword(text)}
               value={this.state.passwordValue}
             />
             <Icon
-              active name={!this.state.showPassword ? "eye" : "eye-off"}
+              active name={!this.state.isShowPassword ? "eye" : "eye-off"}
               onPress={() => {
-                this.showPassword();
+                this.onShowPassword();
               }}
             />
           </Item>
           <Button full warning rounded
-            disabled={!this.state.validLogin}
-            onPress={() => this.props.navigation.navigate('Home')}
+            disabled={!this.state.isValidLogin}
+            onPress={() => this.props.navigation.navigate('ForYou')}
           >
             <Text style={styles.textButton}>Log In</Text>
           </Button>
@@ -105,15 +104,15 @@ const styles = StyleSheet.create({
     backgroundColor: '#f5f6fa',
     alignItems: 'center',
   },
-  content: {
+  viewContent: {
     flex: 1,
     justifyContent: 'center',
   },
-  title: {
+  textTitle: {
     fontSize: 40,
     textAlign: 'center',
   },
-  subtitle: {
+  textSubTitle: {
     fontSize: 15,
     marginBottom: '10%',
     textAlign: 'center',
@@ -125,21 +124,21 @@ const styles = StyleSheet.create({
   textButton: {
     color: 'black',
   },
-  inputEmail: {
+  itemInput: {
     marginBottom: '3%',
     width: '80%',
   },
-  inputPassword: {
+  itemInput2: {
     marginBottom: '8%',
     width: '80%',
   },
   textInputError: {
     borderColor: 'red',
   },
-  image: {
+  logo: {
     width: 130,
-    height: 120,
-    marginBottom: 30,
-    alignSelf: "center"
+    height: 130,
+    alignSelf: "center",
+    marginBottom: 20
   }
 });
