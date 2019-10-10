@@ -6,6 +6,7 @@ import { Icon } from 'native-base'
 import Login from './src/screens/Login';
 import Foryou from './src/screens/Foryou';
 import DetailWebtoon from './src/screens/DetailWebtoon';
+import DetailEpisode from './src/screens/DetailEpisode';
 
 const onShare = async () => {
   try {
@@ -41,7 +42,24 @@ const AuthStack = createStackNavigator({
   DetailWebtoon: {
     screen: DetailWebtoon,
     navigationOptions: {
-      headerTitle: 'The Secret Of Angel',
+      headerTitle: 'Kematian Jiraiya',
+      headerRight: <Icon light name="share" onPress={onShare} />,
+      headerStyle: {
+        backgroundColor: '#ffffff',
+      },
+      headerRightContainerStyle: {
+        marginEnd: 20,
+      },
+      headerTitleStyle: {
+        fontWeight: 'bold',
+      },
+      headerTintColor: 'black',
+    },
+  },
+  DetailEpisode: {
+    screen: DetailEpisode,
+    navigationOptions: {
+      headerTitle: 'Kematian Jiraiya',
       headerRight: <Icon light name="share" onPress={onShare} />,
       headerStyle: {
         backgroundColor: '#ffffff',

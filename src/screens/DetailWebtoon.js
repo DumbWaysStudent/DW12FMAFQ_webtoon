@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, FlatList, SafeAreaView, Image } from 'react-native';
+import { StyleSheet, FlatList, SafeAreaView, Image, TouchableOpacity } from 'react-native';
 import { Text, View, Item } from 'native-base';
 
 class DetailWebtoon extends Component {
@@ -10,36 +10,30 @@ class DetailWebtoon extends Component {
       interval: null,
       banners: [
         {
-          title: 'Ep.5',
-          url:
-            'https://akcdn.detik.net.id/community/media/visual/2019/04/03/dac43146-7dd4-49f4-89ca-d81f57b070fc.jpeg?w=770&q=90',
+          title: 'Ep.5 Bangkitnya Madara',
+          url: 'https://vignette.wikia.nocookie.net/naruto/images/6/63/Madara_targets_Tailed_Beasts.png/revision/latest?cb=20141216140857&path-prefix=id',
           dates: '5 Februari 2019',
         },
         {
-          title: 'Ep.4',
-          url:
-            'https://akcdn.detik.net.id/community/media/visual/2019/04/03/dac43146-7dd4-49f4-89ca-d81f57b070fc.jpeg?w=770&q=90',
+          title: 'Ep.4 Itachi vs Sasuke',
+          url: 'https://i.ytimg.com/vi/o95fomzhCZo/maxresdefault.jpg',
           dates: '20 Januari 2019',
 
         },
         {
-          title: 'Ep.3',
-          url:
-            'https://akcdn.detik.net.id/community/media/visual/2019/04/03/dac43146-7dd4-49f4-89ca-d81f57b070fc.jpeg?w=770&q=90',
+          title: 'Ep.3 Rapat Kage',
+          url: 'https://d.wattpad.com/story_parts/179/images/1585520188369900607095857880.jpg',
           dates: '1 Januari 2019',
         },
         {
-          title: 'Ep.2',
-          url:
-            'https://akcdn.detik.net.id/community/media/visual/2019/04/03/dac43146-7dd4-49f4-89ca-d81f57b070fc.jpeg?w=770&q=90',
+          title: 'Ep.2 Naruto vs Pain',
+          url: 'https://i.pinimg.com/originals/ef/4a/6f/ef4a6f97b3184a39859977511dc34bad.jpg',
           dates: '15 Desember 2018',
         },
         {
-          title: 'Ep.1',
-          url:
-            'https://akcdn.detik.net.id/community/media/visual/2019/04/03/dac43146-7dd4-49f4-89ca-d81f57b070fc.jpeg?w=770&q=90',
+          title: 'Ep.1 Kematian Jiraiya',
+          url: 'https://dreager1.files.wordpress.com/2012/02/jiraiya_killed_by_pain.jpg',
           dates: '1 Desember 2018',
-
         },
       ],
     };
@@ -69,7 +63,7 @@ class DetailWebtoon extends Component {
                 width: "100%",
                 height: 200
               }}
-              source={{ uri: 'https://akcdn.detik.net.id/community/media/visual/2019/04/03/dac43146-7dd4-49f4-89ca-d81f57b070fc.jpeg?w=770&q=90' }}
+              source={{ uri: 'https://dreager1.files.wordpress.com/2012/02/jiraiya_killed_by_pain.jpg' }}
             />
           </Item>
         </View>
@@ -92,8 +86,12 @@ class DetailWebtoon extends Component {
                       source={{ uri: item.url }}
                     />
                     <View style={styles.viewListItem}>
-                      <Text>{item.title}</Text>
-                      <Text style={{ fontSize: 13, fontColor: 'grey' }}>{item.dates}</Text>
+                      <TouchableOpacity onPress={() => this.props.navigation.navigate('DetailEpisode')}>
+                        <Text>{item.title}</Text>
+                        <Text
+                          style={{ fontSize: 13, fontColor: 'grey' }}>{item.dates}
+                        </Text>
+                      </TouchableOpacity>
                     </View>
                   </View>
                 )}
@@ -133,12 +131,6 @@ const styles = StyleSheet.create({
     width: '90%',
     borderWidth: 3,
     borderColor: 'grey',
-  },
-  itemMarginBottom: {
-    marginBottom: 10,
-  },
-  itemMarginBottomInput: {
-    marginBottom: 20,
   },
   favoriteTitle: {
     textAlign: 'center',

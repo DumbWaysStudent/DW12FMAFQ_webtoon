@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, FlatList, SafeAreaView, Image, Dimensions } from 'react-native';
+import { StyleSheet, FlatList, Image, Dimensions, TouchableOpacity } from 'react-native';
 import { Text, View, Icon, Item, Label, Input, Button, } from 'native-base';
 import { createAppContainer } from 'react-navigation';
 import { createMaterialBottomTabNavigator } from 'react-navigation-material-bottom-tabs';
@@ -17,24 +17,24 @@ class Foryou extends Component {
       interval: null,
       banners: [
         {
-          title: 'The Secret ....',
-          url: 'https://akcdn.detik.net.id/community/media/visual/2019/04/03/dac43146-7dd4-49f4-89ca-d81f57b070fc.jpeg?w=770&q=90',
+          title: 'Kematian Jiraiya',
+          url: 'https://dreager1.files.wordpress.com/2012/02/jiraiya_killed_by_pain.jpg',
         },
         {
-          title: 'Pasutri Gaje',
-          url: 'https://akcdn.detik.net.id/community/media/visual/2019/04/03/dac43146-7dd4-49f4-89ca-d81f57b070fc.jpeg?w=770&q=90',
+          title: 'Naruto vs Pain',
+          url: 'https://i.pinimg.com/originals/ef/4a/6f/ef4a6f97b3184a39859977511dc34bad.jpg',
         },
         {
-          title: 'Young Mom',
-          url: 'https://akcdn.detik.net.id/community/media/visual/2019/04/03/dac43146-7dd4-49f4-89ca-d81f57b070fc.jpeg?w=770&q=90',
+          title: 'Rapat Kage',
+          url: 'https://d.wattpad.com/story_parts/179/images/1585520188369900607095857880.jpg',
         },
         {
-          title: 'Young Lady',
-          url: 'https://akcdn.detik.net.id/community/media/visual/2019/04/03/dac43146-7dd4-49f4-89ca-d81f57b070fc.jpeg?w=770&q=90',
+          title: 'Itachi vs Sasuke',
+          url: 'https://i.ytimg.com/vi/o95fomzhCZo/maxresdefault.jpg',
         },
         {
-          title: 'Old Mom',
-          url: 'https://akcdn.detik.net.id/community/media/visual/2019/04/03/dac43146-7dd4-49f4-89ca-d81f57b070fc.jpeg?w=770&q=90',
+          title: 'Bangkitnya Madara',
+          url: 'https://vignette.wikia.nocookie.net/naruto/images/6/63/Madara_targets_Tailed_Beasts.png/revision/latest?cb=20141216140857&path-prefix=id',
         },
       ],
     };
@@ -65,42 +65,42 @@ class Foryou extends Component {
           </Item>
           <Item style={styles.itemMarginBottom}>
             <Slideshow
-              containerStyle={styles.itemSliderImage}
+              containerStyle={styles.sliderImage}
               dataSource={this.state.banners}
               position={this.state.position}
-              indicatorSelectedColor="#3BAD87"
+              indicatorSelectedColor="#f39c12"
               indicatorColor="#f0edf6"
               onPositionChanged={position => this.setState({ position })}
             />
           </Item>
         </View>
 
-        <View style={[styles.inputText, styles.itemMarginBottomInput]}>
+        <View style={styles.inputText}>
           <View>
-            <View>
-              <Label style={styles.textSubTitle}>Favourite</Label>
-              <View style={[styles.viewColor, { paddingTop: 10, marginBottom: 10 }]}>
-                <FlatList
-                  style={styles.itemMarginBottom}
-                  horizontal
-                  showsHorizontalScrollIndicator={false}
-                  data={this.state.banners}
-                  renderItem={({ item }) => (
-                    <View style={styles.favItem}>
+            <Label style={styles.textSubTitle}>Favourite</Label>
+            <View style={styles.viewColor}>
+              <FlatList
+                style={styles.itemMarginBottom}
+                horizontal
+                showsHorizontalScrollIndicator={false}
+                data={this.state.banners}
+                renderItem={({ item }) => (
+                  <View style={styles.favItem}>
+                    <TouchableOpacity onPress={() => this.props.navigation.navigate('DetailWebtoon')}>
                       <Image
                         style={{ width: 100, height: 100, borderWidth: 3, borderColor: 'grey' }}
                         source={{ uri: item.url }}
                       />
                       <Text style={styles.favoriteTitle}>{item.title}</Text>
-                    </View>
-                  )}
-                  keyExtractor={item => item}
-                />
-              </View>
+                    </TouchableOpacity>
+                  </View>
+                )}
+                keyExtractor={item => item}
+              />
             </View>
-            <Label style={styles.textSubTitle}>All</Label>
           </View>
         </View>
+        <Label style={styles.textSubTitle}>All</Label>
         <FlatList
           showsVerticalScrollIndicator={false}
           data={this.state.banners}
@@ -112,7 +112,9 @@ class Foryou extends Component {
               />
               <View style={styles.viewListItem}>
                 <Text>{item.title}</Text>
-                <Button warning style={styles.btnFavorite}><Text style={styles.textFavorite}> + Favorite </Text></Button>
+                <TouchableOpacity >
+                  <Button onPress={() => this.props.navigation.navigate('DetailWebtoon')} warning style={styles.btnFavorite}><Text style={styles.textFavorite}> + Favorite </Text></Button>
+                </TouchableOpacity>
               </View>
             </View>
           )}
@@ -138,7 +140,7 @@ const styles = StyleSheet.create({
   viewColor: {
     width: '100%',
     backgroundColor: '#ffffff',
-    alignItems: 'center',
+    alignItems: 'center'
   },
   inputText: {
     width: '100%',
@@ -146,23 +148,17 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     borderRadius: 15,
   },
-  itemSliderImage: {
+  sliderImage: {
     width: '90%',
     borderWidth: 3,
     borderColor: 'grey',
   },
-  itemMarginBottom: {
-    marginBottom: 10,
-  },
-  itemMarginBottomInput: {
-    marginBottom: 20,
-  },
   favoriteTitle: {
     textAlign: 'center',
+    fontSize: 12
   },
   textSubTitle: {
     fontSize: 18,
-    marginBottom: 4,
     fontWeight: 'bold',
   },
   favItem: {
