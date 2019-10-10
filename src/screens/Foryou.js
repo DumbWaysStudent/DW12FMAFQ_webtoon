@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, FlatList, SafeAreaView, Image, Dimensions } from 'react-native';
+import { StyleSheet, FlatList, Image, Dimensions, TouchableOpacity } from 'react-native';
 import { Text, View, Icon, Item, Label, Input, Button, } from 'native-base';
 import { createAppContainer } from 'react-navigation';
 import { createMaterialBottomTabNavigator } from 'react-navigation-material-bottom-tabs';
@@ -87,11 +87,13 @@ class Foryou extends Component {
                   data={this.state.banners}
                   renderItem={({ item }) => (
                     <View style={styles.favItem}>
+                     <TouchableOpacity onPress={() => this.props.navigation.navigate('DetailWebtoon')}>
                       <Image
                         style={{ width: 100, height: 100, borderWidth: 3, borderColor: 'grey' }}
                         source={{ uri: item.url }}
                       />
                       <Text style={styles.favoriteTitle}>{item.title}</Text>
+                     </TouchableOpacity>
                     </View>
                   )}
                   keyExtractor={item => item}
@@ -106,10 +108,12 @@ class Foryou extends Component {
           data={this.state.banners}
           renderItem={({ item }) => (
             <View style={styles.viewAddFav}>
+            <TouchableOpacity onPress={() => this.props.navigation.navigate('DetailWebtoon')}>
               <Image
                 style={{ width: 50, height: 50, borderWidth: 3, borderColor: 'grey' }}
                 source={{ uri: item.url }}
               />
+             </TouchableOpacity>
               <View style={styles.viewListItem}>
                 <Text>{item.title}</Text>
                 <Button warning style={styles.btnFavorite}><Text style={styles.textFavorite}> + Favorite </Text></Button>
