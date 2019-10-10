@@ -80,8 +80,8 @@ class DetailWebtoon extends Component {
                       style={{
                         width: 50,
                         height: 50,
-                        borderWidth: 3,
-                        borderColor: 'grey',
+                        borderWidth: 2,
+                        borderColor: 'black',
                       }}
                       source={{ uri: item.url }}
                     />
@@ -95,7 +95,7 @@ class DetailWebtoon extends Component {
                     </View>
                   </View>
                 )}
-                keyExtractor={item => item}
+                keyExtractor={(item, index) => index.toString()}
               />
             </View>
           </SafeAreaView>

@@ -4,7 +4,7 @@ import { Text, View, Icon, Item, Label, Input, Button, } from 'native-base';
 import { createAppContainer } from 'react-navigation';
 import { createMaterialBottomTabNavigator } from 'react-navigation-material-bottom-tabs';
 import Slideshow from 'react-native-image-slider-show';
-import Favourite from './Favourite';
+import Favourite from './My_Favourite';
 import Profile from './Profile';
 
 
@@ -55,7 +55,6 @@ class Foryou extends Component {
     clearInterval(this.state.interval);
   }
   render() {
-    console.disableYellowBox = true;
     return (
       <View style={styles.viewContent}>
         <View style={styles.viewColor}>
@@ -65,6 +64,7 @@ class Foryou extends Component {
           </Item>
           <Item style={styles.itemMarginBottom}>
             <Slideshow
+              titleStyle={{ color: 'white' }}
               containerStyle={styles.sliderImage}
               dataSource={this.state.banners}
               position={this.state.position}
@@ -88,14 +88,14 @@ class Foryou extends Component {
                   <View style={styles.favItem}>
                     <TouchableOpacity onPress={() => this.props.navigation.navigate('DetailWebtoon')}>
                       <Image
-                        style={{ width: 100, height: 100, borderWidth: 3, borderColor: 'grey' }}
+                        style={{ width: 100, height: 100, borderWidth: 2, borderColor: 'black' }}
                         source={{ uri: item.url }}
                       />
                       <Text style={styles.favoriteTitle}>{item.title}</Text>
                     </TouchableOpacity>
                   </View>
                 )}
-                keyExtractor={item => item}
+                keyExtractor={(item, index) => index.toString()}
               />
             </View>
           </View>
@@ -107,7 +107,7 @@ class Foryou extends Component {
           renderItem={({ item }) => (
             <View style={styles.viewAddFav}>
               <Image
-                style={{ width: 50, height: 50, borderWidth: 3, borderColor: 'grey' }}
+                style={{ width: 50, height: 50, borderWidth: 2, borderColor: 'black' }}
                 source={{ uri: item.url }}
               />
               <View style={styles.viewListItem}>
@@ -118,7 +118,7 @@ class Foryou extends Component {
               </View>
             </View>
           )}
-          keyExtractor={item => item}
+          keyExtractor={(item, index) => index.toString()}
         />
       </View>
     );
@@ -131,11 +131,9 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   viewContent: {
-    marginStart: 10,
-    width: '95%',
-    alignItems: 'flex-start',
     borderRadius: 15,
     flex: 1,
+    backgroundColor: '#ffffff'
   },
   viewColor: {
     width: '100%',
@@ -150,8 +148,8 @@ const styles = StyleSheet.create({
   },
   sliderImage: {
     width: '90%',
-    borderWidth: 3,
-    borderColor: 'grey',
+    borderWidth: 2,
+    borderColor: 'black',
   },
   favoriteTitle: {
     textAlign: 'center',
@@ -160,6 +158,7 @@ const styles = StyleSheet.create({
   textSubTitle: {
     fontSize: 18,
     fontWeight: 'bold',
+    marginLeft: 20
   },
   favItem: {
     marginStart: 20,
