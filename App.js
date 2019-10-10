@@ -7,15 +7,6 @@ import Login from './src/screens/Login';
 import Foryou from './src/screens/Foryou';
 import DetailWebtoon from './src/screens/DetailWebtoon';
 
-const App = createSwitchNavigator({
-  App: {
-    screen: Login,
-  },
-  Auth: {
-    screen: AuthStack,
-  },
-});
-
 const onShare = async () => {
   try {
     const result = await Share.share({
@@ -63,6 +54,15 @@ const AuthStack = createStackNavigator({
       },
       headerTintColor: 'black',
     },
+  },
+});
+
+const App = createSwitchNavigator({
+  App: {
+    screen: Login,
+  },
+  Auth: {
+    screen: AuthStack,
   },
 });
 
