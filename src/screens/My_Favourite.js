@@ -27,18 +27,6 @@ class My_Favourite extends Component {
     };
   }
 
-  handleSearch() {
-    let search = text;
-    let data = this.state.dataBackup;
-    search = search.trim().toString().toLowerCase();
-    data = data.filter(l => {
-      return l.nama.toString().toLowerCase().match(search);
-    });
-    this.setState({
-      data: data,
-    });
-  }
-
   render() {
     return (
       <View style={styles.viewContent}>
