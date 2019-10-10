@@ -108,15 +108,15 @@ class Foryou extends Component {
           data={this.state.banners}
           renderItem={({ item }) => (
             <View style={styles.viewAddFav}>
-            <TouchableOpacity onPress={() => this.props.navigation.navigate('DetailWebtoon')}>
               <Image
                 style={{ width: 50, height: 50, borderWidth: 3, borderColor: 'grey' }}
                 source={{ uri: item.url }}
               />
-             </TouchableOpacity>
               <View style={styles.viewListItem}>
                 <Text>{item.title}</Text>
+             <TouchableOpacity onPress={() => this.props.navigation.navigate('DetailWebtoon')}>
                 <Button warning style={styles.btnFavorite}><Text style={styles.textFavorite}> + Favorite </Text></Button>
+             </TouchableOpacity>
               </View>
             </View>
           )}
