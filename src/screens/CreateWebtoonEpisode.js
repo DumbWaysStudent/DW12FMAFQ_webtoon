@@ -9,30 +9,25 @@ class CreateWebtoon extends Component {
       inputValue: '',
       banners: [
         {
-          title: 'Ep.5 Bangkitnya Madara',
+          title: '1.cover.png',
           url: 'https://vignette.wikia.nocookie.net/naruto/images/6/63/Madara_targets_Tailed_Beasts.png/revision/latest?cb=20141216140857&path-prefix=id',
-          dates: '5 Februari 2019',
         },
         {
-          title: 'Ep.4 Itachi vs Sasuke',
+          title: '2.introduction.png',
           url: 'https://i.ytimg.com/vi/o95fomzhCZo/maxresdefault.jpg',
-          dates: '20 Januari 2019',
 
         },
         {
-          title: 'Ep.3 Rapat Kage',
+          title: '3.basic.png',
           url: 'https://d.wattpad.com/story_parts/179/images/1585520188369900607095857880.jpg',
-          dates: '1 Januari 2019',
         },
         {
-          title: 'Ep.2 Naruto vs Pain',
+          title: '4.advance.png',
           url: 'https://i.pinimg.com/originals/ef/4a/6f/ef4a6f97b3184a39859977511dc34bad.jpg',
-          dates: '15 Desember 2018',
         },
         {
-          title: 'Ep.1 Kematian Jiraiya',
+          title: '5.tutor.png',
           url: 'https://dreager1.files.wordpress.com/2012/02/jiraiya_killed_by_pain.jpg',
-          dates: '1 Desember 2018',
         },
       ],
     };
@@ -44,13 +39,13 @@ class CreateWebtoon extends Component {
         <Item style={[styles.inputText, styles.itemMarginBottomInput]}>
           <SafeAreaView>
             <View style={styles.viewContent}>
-              <Text style={styles.titleStyle}>Title</Text>
+              <Text style={styles.titleStyle}>Name</Text>
               <TextInput
                 style={{ height: 40, width: 375, borderColor: 'black', borderWidth: 2, marginStart: 10 }}
                 onChangeText={text => this.setState({ inputValue: text })}
-                value={this.state.inputValue}
+                value={this.state.title}
               />
-              <Text style={styles.subtitleStyle}>Episode</Text>
+              <Text style={styles.subtitleStyle}>Add Image</Text>
               <FlatList
                 showsVerticalScrollIndicator={false}
                 data={this.state.banners}
@@ -58,8 +53,8 @@ class CreateWebtoon extends Component {
                   <View style={styles.viewAddFav}>
                     <Image
                       style={{
-                        width: 50,
-                        height: 50,
+                        width: 70,
+                        height: 70,
                         borderWidth: 2,
                         borderColor: 'black',
                       }}
@@ -68,18 +63,20 @@ class CreateWebtoon extends Component {
                     <View style={styles.viewListItem}>
                       <TouchableOpacity onPress={() => this.props.navigation.navigate('DetailEpisode')}>
                         <Text>{item.title}</Text>
-                        <Text
-                          style={{ fontSize: 13, fontColor: 'grey' }}>{item.dates}
-                        </Text>
                       </TouchableOpacity>
+                      <Button
+                        warning
+                        style={{ justifyContent: 'center', height: 30, width: 90 }}>
+                        <Text style={{ fontSize: 12 }}>Delete</Text>
+                      </Button>
                     </View>
                   </View>
                 )}
                 keyExtractor={(item, index) => index.toString()}
               />
             </View>
-            <Button style={styles.btnAdd} onPress={() => this.props.navigation.navigate('CreateWebtoonEpisode')}>
-              <Text style={{ color: "white" }}>+ ADD EPISODE</Text>
+            <Button style={styles.btnAdd}>
+              <Text style={{ color: "white" }}>+ Image</Text>
             </Button>
           </SafeAreaView>
         </Item>
