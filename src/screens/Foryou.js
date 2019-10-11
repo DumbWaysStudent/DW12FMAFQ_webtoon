@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { StyleSheet, FlatList, Image, Dimensions, TouchableOpacity } from 'react-native';
-import { Text, View, Icon, Item, Label, Input, Button, } from 'native-base';
+import { Text, View, Icon, Item, Label, Input, Button } from 'native-base';
 import { createAppContainer } from 'react-navigation';
 import { createMaterialBottomTabNavigator } from 'react-navigation-material-bottom-tabs';
 import Slideshow from 'react-native-image-slider-show';

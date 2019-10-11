@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, StyleSheet, Dimensions, Image, ScrollView, TouchableOpacity } from 'react-native';
+import { View, StyleSheet, Dimensions, Image, ScrollView, TouchableOpacity } from 'react-native';
 import { Icon, Item, Input } from 'native-base'
 import ImagePicker from 'react-native-image-picker'
 const { width: SCREEN_WIDTH, height: SCREEN_HEIGHT } = Dimensions.get('window')
