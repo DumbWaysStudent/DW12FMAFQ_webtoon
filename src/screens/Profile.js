@@ -3,7 +3,6 @@ import { Text, View, StyleSheet, Dimensions, Image, ScrollView, TouchableOpacity
 import { Icon, Button } from 'native-base'
 
 const { width: SCREEN_WIDTH, height: SCREEN_HEIGHT } = Dimensions.get('window')
-
 export default class Profile extends Component {
   constructor() {
     super()
@@ -19,10 +18,10 @@ export default class Profile extends Component {
         <View style={{ width: SCREEN_WIDTH, height: SCREEN_HEIGHT / 6, }}>
           <View style={styles.absolutebg}>
             <Text style={styles.texthello}>Profile</Text>
-            <Icon name="create" />
+            <Icon onPress={() => this.props.navigation.navigate('EditProfile')} name="create" style={{ color: 'orange' }} />
           </View>
         </View>
-        <View >
+        <View>
           <View style={{ alignItems: "center", }}>
             <Image style={styles.login} source={{ uri: this.state.image }} />
             <Text style={styles.nameInfo}>Your Name</Text>
@@ -75,7 +74,8 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     backgroundColor: 'white',
     borderWidth: 1,
-    borderColor: 'black'
+    borderColor: 'black',
+    backgroundColor: 'orange'
   },
   touchableX: {
     justifyContent: "center",
