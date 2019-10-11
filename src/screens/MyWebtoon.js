@@ -26,7 +26,7 @@ class MyWebtoon extends Component {
         {
           title: 'Itachi vs Sasuke',
           url: 'https://i.ytimg.com/vi/o95fomzhCZo/maxresdefault.jpg',
-          favourite: '25 Episode(s)',
+          favorite: '25 Episode(s)',
         },
         {
           title: 'Bangkitnya Madara',
@@ -60,10 +60,7 @@ class MyWebtoon extends Component {
               <View style={styles.viewAddFav}>
                 <Image
                   onPress={() =>
-                    this.props.navigation.navigate('DetailEpisode', {
-                      itemTitle: item.title,
-                    })
-                  }
+                    this.props.navigation.navigate('EditWebtoon')}
                   style={{
                     width: 80,
                     height: 80,
@@ -74,20 +71,12 @@ class MyWebtoon extends Component {
                 />
                 <View style={styles.viewListItem}>
                   <Text
-                    onPress={() =>
-                      this.props.navigation.navigate('DetailEpisode', {
-                        itemTitle: item.title,
-                      })
-                    }>
+                    onPress={() => this.props.navigation.navigate('EditWebtoon')}>
                     {item.title}
                   </Text>
                   <Text
                     style={{ marginTop: 5, fontSize: 13, color: '#7f8c8d' }}
-                    onPress={() =>
-                      this.props.navigation.navigate('DetailEpisode', {
-                        itemTitle: item.title,
-                      })
-                    }>
+                    onPress={() => this.props.navigation.navigate('EditWebtoon')}>
                     {item.favorite}
                   </Text>
                 </View>
