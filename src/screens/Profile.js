@@ -27,7 +27,7 @@ export default class Profile extends Component {
             <Text style={styles.nameInfo}>Your Name</Text>
           </View>
           <View style={styles.action} >
-            <TouchableOpacity style={styles.touchableX}>
+            <TouchableOpacity style={styles.touchableX} onPress={() => this.props.navigation.navigate('MyWebtoon')}>
               <View style={styles.wrapItemTou}>
                 <Text>My Webtoon Creation</Text>
                 <Icon name="arrow-dropright" style={{ fontSize: 50 }} />

@@ -8,6 +8,7 @@ import Foryou from './src/screens/Foryou';
 import DetailWebtoon from './src/screens/DetailWebtoon';
 import DetailEpisode from './src/screens/DetailEpisode';
 import EditProfile from './src/screens/EditProfile';
+import MyWebtoon from './src/screens/MyWebtoon';
 
 const onShare = async () => {
   try {
@@ -61,7 +62,7 @@ const AuthStack = createStackNavigator({
     screen: DetailEpisode,
     navigationOptions: {
       headerTitle: 'Kematian Jiraiya',
-      headerRight: <Icon light name="share" style={{ color: 'orange' }} onPress={onShare} />,
+      headerRight: <Icon light name="share" onPress={onShare} />,
       headerStyle: {
         backgroundColor: '#ffffff',
       },
@@ -80,12 +81,25 @@ const AuthStack = createStackNavigator({
       headerTitle: 'Edit Profile',
       headerLeft: null,
       headerRight: (
-        <Icon style={{ color: 'orange' }} name="checkmark" />
+        <Icon style={{ color: 'range' }} name="create" />
       ),
       headerStyle: {
         backgroundColor: '##fff',
         padding: 10,
         borderBottomWidth: 1
+      },
+      headerRightContainerStyle: {
+        marginEnd: 15,
+      },
+      headerTintColor: 'black',
+    },
+  },
+  MyWebtoon: {
+    screen: MyWebtoon,
+    navigationOptions: {
+      headerTitle: 'My Webtoon',
+      headerStyle: {
+        backgroundColor: '#ffffff',
       },
       headerRightContainerStyle: {
         marginEnd: 15,
