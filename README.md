@@ -30,7 +30,7 @@ Click to Watch Video on Youtube:
   
   <img src="./src/assets/6.profile.jpg" width="200" height="350" alt="Profile Screen"/>
 
-  <img src="./src/assets/7.edit_screen.jpg" width="200" height="350" alt="Edit Screen"/>
+  <img src="./src/assets/7.edit_profile.jpg" width="200" height="350" alt="Edit Screen"/>
 
   <img src="./src/assets/8.creation_screen.jpg" width="200" height="350" alt="Creation Screen"/>
 
