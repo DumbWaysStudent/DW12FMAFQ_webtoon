@@ -9,6 +9,7 @@ import DetailWebtoon from './src/screens/DetailWebtoon';
 import DetailEpisode from './src/screens/DetailEpisode';
 import EditProfile from './src/screens/EditProfile';
 import MyWebtoon from './src/screens/MyWebtoon';
+import CreateWebtoon from './src/screens/CreateWebtoon';
 
 const onShare = async () => {
   try {
@@ -89,7 +90,7 @@ const AuthStack = createStackNavigator({
         borderBottomWidth: 1
       },
       headerRightContainerStyle: {
-        marginEnd: 15,
+        marginEnd: 20,
       },
       headerTintColor: 'black',
     },
@@ -102,7 +103,23 @@ const AuthStack = createStackNavigator({
         backgroundColor: '#ffffff',
       },
       headerRightContainerStyle: {
-        marginEnd: 15,
+        marginEnd: 20,
+      },
+      headerTintColor: 'black',
+    },
+  },
+  CreateWebtoon: {
+    screen: CreateWebtoon,
+    navigationOptions: {
+      headerTitle: 'Create Webtoon',
+      headerRight: (
+        <Icon style={{ color: 'orange', fontSize: 30 }} name="checkmark" />
+      ),
+      headerStyle: {
+        backgroundColor: '#fff',
+      },
+      headerRightContainerStyle: {
+        marginEnd: 20,
       },
       headerTintColor: 'black',
     },

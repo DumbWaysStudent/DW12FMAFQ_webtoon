@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { StyleSheet, FlatList, Image } from 'react-native';
-import { Text, View, Icon, Item, Input } from 'native-base';
+import { Text, View, Icon, Item, Input, Fab } from 'native-base';
 
 class MyWebtoon extends Component {
   constructor(props) {
@@ -96,6 +96,14 @@ class MyWebtoon extends Component {
             keyExtractor={(item, index) => index.toString()}
           />
         </View>
+        <Fab
+          direction="up"
+          containerStyle={{}}
+          style={{ backgroundColor: 'orange' }}
+          position="bottomRight"
+          onPress={() => this.props.navigation.navigate('CreateWebtoon')}>
+          <Icon name="add" />
+        </Fab>
       </View>
     );
   }
