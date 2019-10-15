@@ -5,6 +5,7 @@ module.exports = {
     return queryInterface.bulkInsert('webtoons', [
       {
         title: 'Kematian Jiraiya',
+        genre: 'Action',
         is_favourite: true,
         image: 'https://dreager1.files.wordpress.com/2012/02/jiraiya_killed_by_pain.jpg',
         favourite_count: 80,
@@ -13,6 +14,7 @@ module.exports = {
       {
         title: 'Naruto vs Pain',
         is_favourite: true,
+        genre: 'Action',
         image: 'https://i.pinimg.com/originals/ef/4a/6f/ef4a6f97b3184a39859977511dc34bad.jpg',
         favourite_count: 75,
         created_by: 1
@@ -20,6 +22,7 @@ module.exports = {
       {
         title: 'Rapat Kage',
         is_favourite: false,
+        genre: 'Action',
         image: 'https://d.wattpad.com/story_parts/179/images/1585520188369900607095857880.jpg',
         favourite_count: 88,
         created_by: 1
@@ -27,6 +30,7 @@ module.exports = {
       {
         title: 'Itachi vs Sasuke',
         is_favourite: true,
+        genre: 'Action',
         image: 'https://i.ytimg.com/vi/o95fomzhCZo/maxresdefault.jpg',
         favourite_count: 90,
         created_by: 1
@@ -34,6 +38,7 @@ module.exports = {
       {
         title: 'Bangkitnya Madara',
         is_favourite: true,
+        genre: 'Action',
         image: 'https://vignette.wikia.nocookie.net/naruto/images/6/63/Madara_targets_Tailed_Beasts.png/revision/latest?cb=20141216140857&path-prefix=id',
         favourite_count: 90,
         created_by: 1
