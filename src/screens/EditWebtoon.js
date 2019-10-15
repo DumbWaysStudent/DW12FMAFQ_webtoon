@@ -83,9 +83,9 @@ class EditWebtoon extends Component {
               />
             </View>
             <Button style={styles.btnAdd} onPress={() => this.props.navigation.navigate('CreateWebtoonEpisode')}>
-              <Text style={{ color: "black" }}>+ Image</Text>
+              <Text style={{ color: "#fff" }}>+ Image</Text>
             </Button>
-            <Button style={styles.btnDelete} onPress={() => this.props.navigation.navigate('CreateWebtoonEpisode')}>
+            <Button style={styles.btnDelete}>
               <Text style={{ color: "white" }}>Delete Episode</Text>
             </Button>
           </SafeAreaView>
@@ -143,7 +143,7 @@ const styles = StyleSheet.create({
     marginStart: 10
   },
   btnAdd: {
-    backgroundColor: '#fff',
+    backgroundColor: 'orange',
     marginTop: 10,
     justifyContent: 'center',
     borderWidth: 1,

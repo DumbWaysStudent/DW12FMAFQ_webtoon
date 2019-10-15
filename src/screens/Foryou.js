@@ -7,7 +7,6 @@ import Slideshow from 'react-native-image-slider-show';
 import Favourite from './My_Favourite';
 import Profile from './Profile';
 
-
 const width = Dimensions.get('window').width
 class Foryou extends Component {
   constructor(props) {
@@ -64,7 +63,7 @@ class Foryou extends Component {
           </Item>
           <Item style={styles.itemMarginBottom}>
             <Slideshow
-              titleStyle={{ color: 'white' }}
+              titleStyle={{ color: '#fff' }}
               containerStyle={styles.sliderImage}
               dataSource={this.state.banners}
               position={this.state.position}
@@ -100,6 +99,7 @@ class Foryou extends Component {
             </View>
           </View>
         </View>
+        
         <Label style={styles.textSubTitle}>All</Label>
         <FlatList
           showsVerticalScrollIndicator={false}

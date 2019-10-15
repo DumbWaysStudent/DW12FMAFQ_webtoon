@@ -122,7 +122,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
   },
   textButton: {
-    color: 'black',
+    color: '#fff',
   },
   itemInput: {
     marginBottom: '3%',

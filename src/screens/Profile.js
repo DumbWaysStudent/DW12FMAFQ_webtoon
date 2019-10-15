@@ -35,7 +35,7 @@ export default class Profile extends Component {
             </TouchableOpacity>
             <View style={styles.logButton}>
               <Button style={styles.logout} onPress={() => this.props.navigation.navigate('Auth')} >
-                <Text style={{ fontWeight: 'bold' }}>LOG OUT</Text>
+                <Text style={{ fontWeight: 'bold', color: '#fff' }}>LOG OUT</Text>
               </Button>
             </View>
           </View>
@@ -72,7 +72,6 @@ const styles = StyleSheet.create({
   logout: {
     justifyContent: "center",
     fontWeight: 'bold',
-    backgroundColor: 'white',
     borderWidth: 1,
     borderColor: 'black',
     backgroundColor: 'orange'
