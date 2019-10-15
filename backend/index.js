@@ -8,8 +8,8 @@ app.use(bodyParser.json())
 
 //controllers
 const UserController = require('./controllers/users')
-const WebtoonController = require('./controllers/webtoons')
 const AuthController = require('./controllers/auth')
+// const WebtoonController = require('./controllers/webtoons')
 
 //middlewares
 // const { authenticated } = require('./middleware')
@@ -18,12 +18,14 @@ app.group("/api/v1", (router) => {
 
     //todos API
     // webtoons
-    router.get('/webtoons', WebtoonController.index)
-    router.get('/webtoons/:id', WebtoonController.show)
-    router.delete('/webtoons/:id', WebtoonController.delete)
-    router.patch('/webtoons/:id', WebtoonController.update)
-    router.put('/webtoons/', WebtoonController.store)
-    router.post('/auth', AuthController.login)
+    router.get('/user', UserController.index)
+    router.get('/user/:id', UserController.show)
+    router.delete('/user/:id', UserController.delete)
+    router.patch('/user/:id', UserController.update)
+    router.put('/user/', UserController.store)
+    router.post('/login', AuthController.login)
+    router.post('/register', AuthController.register)
+
     // users
     // router.get('/webtoon/:id', WebtoonController.show)
     // router.post('/webtoon', WebtoonController.store)

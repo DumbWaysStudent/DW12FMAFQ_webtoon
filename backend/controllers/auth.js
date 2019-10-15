@@ -1,6 +1,7 @@
 const jwt = require('jsonwebtoken')
-
+const bcrypt = require('bcrypt')
 const models = require('../models')
+
 const User = models.users
 
 exports.login = (req, res) => {
@@ -23,3 +24,15 @@ exports.login = (req, res) => {
     }
   })
 }
+
+exports.register = (req, res) => {
+  User.create(req.body).then(user => {
+    const token = jwt.sign({ userId: user.id }, 'my-secret-key');
+    res.send({
+      success: true,
+      message: 'User logged in successfully',
+      data: { user },
+      token,
+    });
+  });
+};
