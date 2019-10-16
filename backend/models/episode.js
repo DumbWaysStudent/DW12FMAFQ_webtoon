@@ -5,7 +5,10 @@ module.exports = (sequelize, DataTypes) => {
     image: DataTypes.STRING
   }, {});
   episode.associate = function (models) {
-    // associations can be defined here
+    episode.belongsTo(models.webtoons, {
+      as: 'webtoonId',
+      foreignKey: 'webtoon_id',
+    });
   };
   return episode;
 };
