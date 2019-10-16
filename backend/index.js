@@ -31,11 +31,9 @@ app.group("/api/v1", (router) => {
 
     // Webtoons
     router.get('/webtoon', WebtoonController.index)
-    router.get('/webtoon/:title', WebtoonController.show)
     router.get('/webtoon/:webtoon_id/episodes', authenticated, EpisodeController.showWebtoonEpisodes);
     router.get('/favourite/:id', authenticated, WebtoonController.showFavourites)
-
-    // Episodes
+    router.get('/webtoons/:title', WebtoonController.cariJudul)
 
     // Images
     router.get('/image/:episode_id', ImageController.index)
