@@ -14,7 +14,7 @@ module.exports = {
       image: {
         type: Sequelize.STRING
       },
-      episode: {
+      episode_id: {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {

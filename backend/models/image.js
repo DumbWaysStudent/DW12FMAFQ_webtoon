@@ -3,10 +3,13 @@ module.exports = (sequelize, DataTypes) => {
   const image = sequelize.define('images', {
     page: DataTypes.INTEGER,
     image: DataTypes.STRING,
-    episode: DataTypes.INTEGER
+    episode_id: DataTypes.INTEGER
   }, {});
   image.associate = function (models) {
-    // associations can be defined here
+    image.belongsTo(models.episodes, {
+      as: 'episodeid',
+      foreignKey: 'episode_id',
+    });
   };
   return image;
 };

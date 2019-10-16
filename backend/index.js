@@ -10,7 +10,8 @@ app.use(bodyParser.json())
 const AuthController = require('./controllers/auth')
 const UserController = require('./controllers/users')
 const WebtoonController = require('./controllers/webtoons')
-const EpisodesController = require('./controllers/episodes');
+const EpisodeController = require('./controllers/episodes');
+const ImageController = require('./controllers/images');
 
 //middlewares
 const { authenticated } = require('./middleware')
@@ -32,7 +33,10 @@ app.group("/api/v1", (router) => {
     router.get('/webtoon', WebtoonController.index)
 
     // Episodes
-    router.get('/episode/:webtoon_id', EpisodesController.index);
+    router.get('/episode/:webtoon_id', EpisodeController.index);
+
+    // Images
+    router.get('/image/:episode_id', ImageController.index)
 })
 
 

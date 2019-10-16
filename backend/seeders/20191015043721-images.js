@@ -6,17 +6,17 @@ module.exports = {
       {
         page: 1,
         image: 'https://i0.wp.com/mangacanblog.com/mangas/naruto/381%20-%20Jiraya%20Vs%20Pain/04.jpg',
-        episode: 1
+        episode_id: 1
       },
       {
         page: 1,
         image: 'https://i2.wp.com/mangacanblog.com/mangas/naruto/381%20-%20Jiraya%20Vs%20Pain/11.jpg',
-        episode: 1
+        episode_id: 1
       },
       {
         page: 1,
         image: 'https://i2.wp.com/mangacanblog.com/mangas/naruto/381%20-%20Jiraya%20Vs%20Pain/11.jpg',
-        episode: 1
+        episode_id: 1
       }
     ], {});
   },
