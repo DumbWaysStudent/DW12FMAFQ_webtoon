@@ -7,35 +7,32 @@ const port = 5000
 app.use(bodyParser.json())
 
 //controllers
-const UserController = require('./controllers/users')
 const AuthController = require('./controllers/auth')
+const UserController = require('./controllers/users')
 const WebtoonController = require('./controllers/webtoons')
+const EpisodesController = require('./controllers/episodes');
 
 //middlewares
 const { authenticated } = require('./middleware')
 
 app.group("/api/v1", (router) => {
 
-    //todos API
-    // webtoons
+    // Login
+    router.post('/login', AuthController.login)
+    router.post('/register', AuthController.register)
+
+    // Users
     router.get('/user', UserController.index)
     router.get('/user/:id', UserController.show)
     router.delete('/user/:id', UserController.delete)
     router.patch('/user/:id', UserController.update)
     router.put('/user/', UserController.store)
 
-    // login
-    router.post('/login', AuthController.login)
-    router.post('/register', AuthController.register)
-
-    // users
+    // Webtoons
     router.get('/webtoon', WebtoonController.index)
-    router.get('/webtoon/:id', WebtoonController.show)
-    router.post('/webtoon', WebtoonController.store)
-    router.patch('/webtoon/:id', WebtoonController.update)
-    router.delete('/webtoon/:id', WebtoonController.delete)
 
-    //another APIs goes here
+    // Episodes
+    router.get('/episode/:webtoon_id', EpisodesController.index);
 })
 
 

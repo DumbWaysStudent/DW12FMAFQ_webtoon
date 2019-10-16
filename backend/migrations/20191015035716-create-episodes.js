@@ -11,7 +11,10 @@ module.exports = {
       title: {
         type: Sequelize.STRING
       },
-      webtoon: {
+      image: {
+        type: Sequelize.STRING
+      },
+      webtoon_id: {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {

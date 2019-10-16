@@ -1,17 +1,17 @@
 const models = require('../models')
-const users = models.users;
+const user = models.users;
 
 
 exports.index = (req, res) => {
-  users.findAll().then(result => res.send(result));
+  user.findAll().then(result => res.send(result));
 }
 
 exports.show = (req, res) => {
-  users.findOne({ where: { id: req.params.id } }).then(result => res.send(result))
+  user.findOne({ where: { id: req.params.id } }).then(result => res.send(result))
 }
 
 exports.store = (req, res) => {
-  users.create(req.body).then(users => {
+  user.create(req.body).then(users => {
     res.send({
       message: "success",
       users
@@ -20,22 +20,22 @@ exports.store = (req, res) => {
 }
 
 exports.update = (req, res) => {
-  users.update(
+  user.update(
     req.body, { where: { id: req.params.id } }
 
   ).then(users => {
     res.send({
       message: "success",
-      users
+      user
     })
   })
 }
 
 exports.delete = (req, res) => {
-  users.destroy({ where: { id: req.params.id } }).then(users => {
+  user.destroy({ where: { id: req.params.id } }).then(users => {
     res.send({
       massage: 'success',
-      users
+      user
     })
   })
 }
