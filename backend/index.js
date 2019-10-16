@@ -31,12 +31,14 @@ app.group("/api/v1", (router) => {
 
     // Webtoons
     router.get('/webtoon', WebtoonController.index)
-
+    router.get('/webtoon/:title', WebtoonController.show)
+    router.get('/favourite/:id', WebtoonController.showFavourites)
     // Episodes
     router.get('/episode/:webtoon_id', EpisodeController.index);
 
     // Images
     router.get('/image/:episode_id', ImageController.index)
+
 })
 
 
