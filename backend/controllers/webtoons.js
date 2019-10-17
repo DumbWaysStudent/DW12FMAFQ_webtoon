@@ -44,11 +44,9 @@ exports.store = (req, res) => {
 exports.update = (req, res) => {
   webtoon.update(
     req.body, { where: { id: req.params.id } }
-
   ).then(webtoons => {
     res.send({
-      message: "success",
-      webtoon
+      ...req.body
     })
   })
 }
