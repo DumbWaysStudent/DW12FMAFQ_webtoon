@@ -49,8 +49,8 @@ app.group("/api/v1", (router) => {
 
     // Images
     router.get('/image/:episode_id', ImageController.index)
-
+    router.post('/user/:id/webtoon/:webtoon_id/episode/:episode_id/image', ImageController.store)
+    router.delete('/user/:id/webtoon/:webtoon_id/episode/:episode_id/image', authenticated, ImageController.delete);
 })
-
 
 app.listen(port, () => console.log(`Listening on port ${port}!`))

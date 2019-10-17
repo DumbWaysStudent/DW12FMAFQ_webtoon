@@ -30,9 +30,10 @@ exports.store = (req, res) => {
     image
   } = req.body
   episodes.create({
-    title: title,
+    page: title,
     image: image,
     webtoon_id: webtoons_id,
+    episode_id: episode_id,
     created_by: user_id
   }).then(episodes => {
     res.send({
