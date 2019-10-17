@@ -31,19 +31,16 @@ exports.store = (req, res) => {
 }
 
 exports.delete = (req, res) => {
-  const id_webtoon = req.params.id
-  const user = req.params.webtoon_id
-  const episodes_id = req.params.episode_id
-  const images = req.page.image.id
-  images.destroy({
+  detailimage.destroy({
     where: {
-      webtoon_id: id_webtoon,
-      created_by: user,
-      id: episodes_id
+      created_by: req.params.id,
+      webtoon_id: req.params.webtoon_id,
+      episode_id: req.params.episode_id,
+      id: req.params.image_id
     }
-  }).then(images => {
+  }).then(data => {
     res.send({
-      data: [`id :${id_webtoon}`]
+      data
     })
   })
 }
