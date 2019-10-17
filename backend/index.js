@@ -14,7 +14,9 @@ const EpisodeController = require('./controllers/episodes');
 const ImageController = require('./controllers/images');
 
 //middlewares
-const { authenticated } = require('./middleware')
+const {
+    authenticated
+} = require('./middleware')
 
 app.group("/api/v1", (router) => {
 
@@ -33,13 +35,14 @@ app.group("/api/v1", (router) => {
     router.get('/webtoon', WebtoonController.index)
     router.get('/favourite/:id', authenticated, WebtoonController.showFavourites)
     router.get('/user/:id/webtoons', authenticated, WebtoonController.showAlltoon)
-    router.get('/webtoons/:title', WebtoonController.cariJudul)
+    router.get('/webtoons/:title', WebtoonController.searchTitle)
     router.post('/user/:id/webtoon/:idwt', WebtoonController.store)
     router.put('/user/:id/webtoon/:idwt', authenticated, WebtoonController.update)
     router.delete('/user/:id/webtoon/:idwt', authenticated, WebtoonController.delete)
 
     // Episode
     router.get('/webtoon/:id/episode/:id', authenticated, EpisodeController.showWebtoonEpisodes);
+    router.get('/user/:id/webtoon/:id_webtoon/episode/:id_episode/images', authenticated, EpisodeController.allImagesEpisodes);
     router.post('/user/:id/webtoon/:idwt/episode', authenticated, EpisodeController.store);
     router.put('/user/:id/webtoon/:id/episode/:id', authenticated, EpisodeController.update);
 

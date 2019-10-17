@@ -9,12 +9,20 @@ exports.index = (req, res) => {
 }
 
 exports.showFavourites = (req, res) => {
-  favourite.findAll({ where: { user_id: req.params.id } }).then(result => res.send(result));
+  favourite.findAll({
+    where: {
+      user_id: req.params.id
+    }
+  }).then(result => res.send(result));
 }
 
 exports.showAlltoon = (req, res) => {
   webtoon.findAll(
-    req.body, { where: { user_id: req.params.id } }
+    req.body, {
+      where: {
+        user_id: req.params.id
+      }
+    }
   ).then(webtoons => {
     res.send({
       webtoons
@@ -22,10 +30,12 @@ exports.showAlltoon = (req, res) => {
   })
 }
 
-exports.cariJudul = async (req, res) => {
+exports.searchTitle = async (req, res) => {
   const searchkomik = await webtoon.findAll({
     where: {
-      title: { [Op.like]: `%${req.params.title}%` }
+      title: {
+        [Op.like]: `%${req.params.title}%`
+      }
     }
   })
   res.send(searchkomik)
@@ -33,7 +43,11 @@ exports.cariJudul = async (req, res) => {
 
 exports.store = (req, res) => {
   webtoon.create(
-    req.body, { where: { user_id: req.params.id } }
+    req.body, {
+      where: {
+        user_id: req.params.id
+      }
+    }
   ).then(webtoons => {
     res.send({
       webtoons
@@ -45,7 +59,12 @@ exports.update = (req, res) => {
   const id_webtoon = req.params.idwt
   const user = req.params.id
   webtoon.update(
-    req.body, { where: { id: id_webtoon, created_by: user } }
+    req.body, {
+      where: {
+        id: id_webtoon,
+        created_by: user
+      }
+    }
   ).then(() => {
     res.send({
       ...req.body
@@ -55,7 +74,11 @@ exports.update = (req, res) => {
 
 exports.delete = (req, res) => {
   const id_webtoon = req.params.idwt
-  webtoon.destroy({ where: { id: id_webtoon } }).then(webtoons => {
+  webtoon.destroy({
+    where: {
+      id: id_webtoon
+    }
+  }).then(webtoons => {
     res.send({
       attributes: [`id :${id_webtoon}`]
     })

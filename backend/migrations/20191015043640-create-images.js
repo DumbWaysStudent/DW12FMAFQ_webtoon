@@ -14,11 +14,31 @@ module.exports = {
       image: {
         type: Sequelize.STRING
       },
+      webtoon_id: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        references: {
+          model: 'episodes',
+          key: 'id'
+        },
+        onUpdate: 'cascade',
+        onDelete: 'cascade'
+      },
       episode_id: {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
           model: 'episodes',
+          key: 'id'
+        },
+        onUpdate: 'cascade',
+        onDelete: 'cascade'
+      },
+      created_by: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        references: {
+          model: 'users',
           key: 'id'
         },
         onUpdate: 'cascade',
