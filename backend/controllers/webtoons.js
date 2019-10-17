@@ -32,9 +32,10 @@ exports.cariJudul = async (req, res) => {
 }
 
 exports.store = (req, res) => {
-  webtoon.create(req.body).then(webtoons => {
+  webtoon.create(
+    req.body, { where: { user_id: req.params.id } }
+  ).then(webtoons => {
     res.send({
-      message: "success",
       webtoons
     })
   })

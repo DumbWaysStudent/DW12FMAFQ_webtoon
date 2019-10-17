@@ -31,10 +31,13 @@ app.group("/api/v1", (router) => {
 
     // Webtoons
     router.get('/webtoon', WebtoonController.index)
-    router.get('/webtoon/:id/episode/:id', authenticated, EpisodeController.showWebtoonEpisodes);
     router.get('/favourite/:id', authenticated, WebtoonController.showFavourites)
     router.get('/user/:id/webtoons', authenticated, WebtoonController.showAlltoon)
     router.get('/webtoons/:title', WebtoonController.cariJudul)
+    router.post('/user/:id/webtoon', authenticated, WebtoonController.store)
+
+    // Episode
+    router.get('/webtoon/:id/episode/:id', authenticated, EpisodeController.showWebtoonEpisodes);
 
     // Images
     router.get('/image/:episode_id', ImageController.index)
