@@ -42,9 +42,9 @@ app.group("/api/v1", (router) => {
 
     // Episode
     router.get('/webtoon/:id/episode/:id', authenticated, EpisodeController.showWebtoonEpisodes);
-    router.get('/user/:id/webtoon/:id_webtoon/episode/:id_episode/images', authenticated, EpisodeController.allImagesEpisodes);
+    router.get('/user/:id/webtoon/:webtoon_id/episode/:episode_id/images', authenticated, EpisodeController.allImagesEpisodes);
     router.post('/user/:id/webtoon/:idwt/episode', authenticated, EpisodeController.store);
-    router.put('/user/:id/webtoon/:id/episode/:id', authenticated, EpisodeController.update);
+    router.put('/user/:id/webtoon/:webtoon_id/episode/:episode_id', authenticated, EpisodeController.update);
 
     // Images
     router.get('/image/:episode_id', ImageController.index)

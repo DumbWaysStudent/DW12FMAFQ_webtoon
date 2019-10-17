@@ -16,8 +16,8 @@ exports.allImagesEpisodes = (req, res) => {
   images.findAll({
     where: {
       created_by: req.params.id,
-      webtoon_id: req.params.id_webtoon,
-      episode_id: req.params.id_episode
+      webtoon_id: req.params.webtoon_id,
+      episode_id: req.params.episode_id
     }
   }).then(result => res.send(result))
 }
@@ -45,13 +45,15 @@ exports.store = (req, res) => {
 }
 
 exports.update = (req, res) => {
-  const id_episode = req.params.id
-  const id_webtoon = req.params.idwt
-  webtoon.update(
+  const id_webtoon = req.params.id
+  const user = req.params.webtoon_id
+  const episodes_id = req.params.episode_id
+  episodes.update(
     req.body, {
       where: {
-        id: id_episode,
-        webtoon_id: id_webtoon
+        webtoon_id: id_webtoon,
+        created_by: user,
+        id: episodes_id
       }
     }
   ).then(() => {
