@@ -30,10 +30,12 @@ app.group("/api/v1", (router) => {
     router.put('/user/', UserController.store)
 
     // Webtoons
-    router.get('/webtoon', WebtoonController.index)
-    router.get('/webtoon/:webtoon_id/episodes', authenticated, EpisodeController.showWebtoonEpisodes);
-    router.get('/favourite/:id', authenticated, WebtoonController.showFavourites)
-    router.get('/webtoons/:title', WebtoonController.cariJudul)
+    router.get('/webtoon', WebtoonController.showAllToon)
+    router.delete('/webtoon/:id', WebtoonController.delete)
+    // router.get('/webtoon/:webtoon_id/episodes', authenticated, EpisodeController.showWebtoonEpisodes);
+    router.get('/webtoon/:id/episode/:id', authenticated, EpisodeController.showWebtoonEpisodes);
+    router.get('/favourite', authenticated, WebtoonController.showFavourites)
+    router.get('/webtoon/:title', WebtoonController.searchTitle)
 
     // Images
     router.get('/image/:episode_id', ImageController.index)

@@ -2,23 +2,50 @@ const sequelize = require('sequelize')
 const models = require('../models')
 const webtoon = models.webtoons;
 const favourite = models.favourites;
+const user = models.users;
 const Op = sequelize.Op;
 
-
-exports.index = (req, res) => {
-  webtoon.findAll().then(result => res.send(result));
+exports.showAllToon = async (req, res) => {
+  if (req.query.title) {
+    const allToon = await webtoon.findAll({
+      where: { title: req.query.title },
+      include: [
+        {
+          model: user,
+          as: 'createdBy',
+          attributes: ['name'],
+        }
+      ],
+    })
+    res.send(allToon)
+  } else {
+    const allToon = await webtoon.findAll({
+      include: [
+        {
+          model: user,
+          as: 'createdBy',
+          attributes: ['name'],
+        }
+      ],
+    })
+    res.send(allToon);
+  };
 }
 
-
-exports.showFavourites = (req, res) => {
-  favourite.findAll({ where: { user_id: req.params.id } }).then(result => res.send(result));
+exports.showFavourites = async (req, res) => {
+  const fav = await favourite.findAll({
+    where: { user_id: req.query.id },
+    attributes: ['createdAt', 'updatedAt'],
+    include: {
+      model: webtoon,
+      as: 'webtoonid',
+      attributes: ['title', 'genre', 'image']
+    }
+  })
+  res.send(fav);
 }
 
-// exports.searchTitle = (req, res) => {
-//   search.findAll({where: {title: req.params.title}}).then(result => res.send(result));
-// }
-
-exports.cariJudul = async (req, res) => {
+exports.searchTitle = async (req, res) => {
   const searchkomik = await webtoon.findAll({
     where: {
       title: { [Op.like]: `%${req.params.title}%` }
@@ -26,8 +53,6 @@ exports.cariJudul = async (req, res) => {
   })
   res.send(searchkomik)
 }
-
-
 
 exports.store = (req, res) => {
   webtoon.create(req.body).then(webtoons => {
@@ -41,7 +66,6 @@ exports.store = (req, res) => {
 exports.update = (req, res) => {
   webtoon.update(
     req.body, { where: { id: req.params.id } }
-
   ).then(webtoons => {
     res.send({
       message: "success",
