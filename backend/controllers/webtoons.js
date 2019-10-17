@@ -4,19 +4,23 @@ const webtoon = models.webtoons;
 const favourite = models.favourites;
 const Op = sequelize.Op;
 
-
 exports.index = (req, res) => {
   webtoon.findAll().then(result => res.send(result));
 }
-
 
 exports.showFavourites = (req, res) => {
   favourite.findAll({ where: { user_id: req.params.id } }).then(result => res.send(result));
 }
 
-// exports.searchTitle = (req, res) => {
-//   search.findAll({where: {title: req.params.title}}).then(result => res.send(result));
-// }
+exports.showAlltoon = (req, res) => {
+  webtoon.findAll(
+    req.body, { where: { user_id: req.params.id } }
+  ).then(webtoons => {
+    res.send({
+      webtoons
+    })
+  })
+}
 
 exports.cariJudul = async (req, res) => {
   const searchkomik = await webtoon.findAll({
@@ -26,8 +30,6 @@ exports.cariJudul = async (req, res) => {
   })
   res.send(searchkomik)
 }
-
-
 
 exports.store = (req, res) => {
   webtoon.create(req.body).then(webtoons => {
