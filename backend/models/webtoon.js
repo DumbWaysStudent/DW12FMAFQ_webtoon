@@ -8,8 +8,10 @@ module.exports = (sequelize, DataTypes) => {
     created_by: DataTypes.INTEGER
   }, {});
   webtoon.associate = function (models) {
-    // associations can be defined here
-
+    webtoon.belongsTo(models.users, {
+      as: 'userid',
+      foreignKey: 'created_by',
+    });
   };
   return webtoon;
 };

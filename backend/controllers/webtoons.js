@@ -42,9 +42,11 @@ exports.store = (req, res) => {
 }
 
 exports.update = (req, res) => {
+  const id_webtoon = req.params.idwt
+  const user = req.params.id
   webtoon.update(
-    req.body, { where: { id: req.params.id } }
-  ).then(webtoons => {
+    req.body, { where: { id: id_webtoon, created_by: user } }
+  ).then(() => {
     res.send({
       ...req.body
     })
@@ -52,7 +54,7 @@ exports.update = (req, res) => {
 }
 
 exports.delete = (req, res) => {
-  const id_webtoon = req.params.id
+  const id_webtoon = req.params.idwt
   webtoon.destroy({ where: { id: id_webtoon } }).then(webtoons => {
     res.send({
       attributes: [`id :${id_webtoon}`]
