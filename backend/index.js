@@ -45,6 +45,7 @@ app.group("/api/v1", (router) => {
     router.get('/user/:id/webtoon/:webtoon_id/episode/:episode_id/images', authenticated, EpisodeController.allImagesEpisodes);
     router.post('/user/:id/webtoon/:idwt/episode', authenticated, EpisodeController.store);
     router.put('/user/:id/webtoon/:webtoon_id/episode/:episode_id', authenticated, EpisodeController.update);
+    router.delete('/user/:id/webtoon/:webtoon_id/episode/:episode_id', authenticated, EpisodeController.delete);
 
     // Images
     router.get('/image/:episode_id', ImageController.index)

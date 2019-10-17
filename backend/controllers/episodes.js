@@ -62,3 +62,20 @@ exports.update = (req, res) => {
     })
   })
 }
+
+exports.delete = (req, res) => {
+  const id_webtoon = req.params.id
+  const user = req.params.webtoon_id
+  const episodes_id = req.params.episode_id
+  episodes.destroy({
+    where: {
+      webtoon_id: id_webtoon,
+      created_by: user,
+      id: episodes_id
+    }
+  }).then(episodes => {
+    res.send({
+      data: [`id :${id_webtoon}`]
+    })
+  })
+}
