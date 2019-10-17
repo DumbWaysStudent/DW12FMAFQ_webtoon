@@ -36,6 +36,7 @@ app.group("/api/v1", (router) => {
     router.get('/webtoons/:title', WebtoonController.cariJudul)
     router.post('/user/:id/webtoon', authenticated, WebtoonController.store)
     router.put('/user/:id/webtoon', authenticated, WebtoonController.update)
+    router.delete('/user/:id/webtoon/:id', authenticated, WebtoonController.delete)
 
     // Episode
     router.get('/webtoon/:id/episode/:id', authenticated, EpisodeController.showWebtoonEpisodes);

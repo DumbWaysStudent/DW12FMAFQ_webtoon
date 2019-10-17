@@ -52,10 +52,10 @@ exports.update = (req, res) => {
 }
 
 exports.delete = (req, res) => {
-  webtoon.destroy({ where: { id: req.params.id } }).then(webtoons => {
+  const id_webtoon = req.params.id
+  webtoon.destroy({ where: { id: id_webtoon } }).then(webtoons => {
     res.send({
-      massage: 'success',
-      webtoon
+      attributes: [`id :${id_webtoon}`]
     })
   })
 }
