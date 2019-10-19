@@ -11,7 +11,7 @@ exports.index = (req, res) => {
 exports.showFavourites = (req, res) => {
   favourite.findAll({
     where: {
-      user_id: req.params.id
+      user_id: req.query.id
     }
   }).then(result => res.send(result));
 }
@@ -19,10 +19,10 @@ exports.showFavourites = (req, res) => {
 exports.showAlltoon = (req, res) => {
   webtoon.findAll(
     req.body, {
-      where: {
-        user_id: req.params.id
-      }
+    where: {
+      user_id: req.params.id
     }
+  }
   ).then(webtoons => {
     res.send({
       webtoons
@@ -44,10 +44,10 @@ exports.searchTitle = async (req, res) => {
 exports.store = (req, res) => {
   webtoon.create(
     req.body, {
-      where: {
-        user_id: req.params.id
-      }
+    where: {
+      user_id: req.params.id
     }
+  }
   ).then(webtoons => {
     res.send({
       webtoons
@@ -60,11 +60,11 @@ exports.update = (req, res) => {
   const user = req.params.id
   webtoon.update(
     req.body, {
-      where: {
-        id: id_webtoon,
-        created_by: user
-      }
+    where: {
+      id: id_webtoon,
+      created_by: user
     }
+  }
   ).then(() => {
     res.send({
       ...req.body
