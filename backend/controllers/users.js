@@ -22,11 +22,10 @@ exports.store = (req, res) => {
 exports.update = (req, res) => {
   user.update(
     req.body, { where: { id: req.params.id } }
-
   ).then(users => {
     res.send({
       message: "success",
-      user
+      users
     })
   })
 }
