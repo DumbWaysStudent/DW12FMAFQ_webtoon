@@ -1,6 +1,7 @@
 const models = require('../models');
 const images = models.images;
 const episodes = models.episodes;
+const webtoons = models.webtoons;
 
 exports.showWebtoonEpisodes = async (req, res) => {
   const webtonEpisode = await images.findAll({
@@ -46,17 +47,17 @@ exports.store = (req, res) => {
 }
 
 exports.update = (req, res) => {
-  const id_webtoon = req.params.id
-  const user = req.params.webtoon_id
+  const id_webtoon = req.params.webtoon_id
+  const user = req.params.id
   const episodes_id = req.params.episode_id
   episodes.update(
     req.body, {
-      where: {
-        webtoon_id: id_webtoon,
-        created_by: user,
-        id: episodes_id
-      }
+    where: {
+      webtoon_id: id_webtoon,
+      created_by: user,
+      id: episodes_id
     }
+  }
   ).then(() => {
     res.send({
       ...req.body
@@ -79,4 +80,18 @@ exports.delete = (req, res) => {
       data: [`id :${id_webtoon}`]
     })
   })
+}
+
+exports.showEpisodes = async (req, res) => {
+  const eps = await episodes.findAll({
+    where: { webtoon_id: req.params.id },
+    include: [
+      {
+        model: webtoons,
+        as: webtoon_id,
+        attributes: ['title'],
+      }
+    ]
+  })
+  res.send(eps)
 }
