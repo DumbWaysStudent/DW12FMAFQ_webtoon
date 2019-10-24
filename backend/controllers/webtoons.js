@@ -2,6 +2,7 @@ const sequelize = require('sequelize')
 const models = require('../models')
 const webtoon = models.webtoons;
 const favourite = models.favourites;
+const user = models.users;
 const Op = sequelize.Op;
 
 exports.index = (req, res) => {
@@ -10,9 +11,20 @@ exports.index = (req, res) => {
 
 exports.showFavourites = (req, res) => {
   favourite.findAll({
-    where: {
-      user_id: req.query.id
-    }
+    where: {user_id: req.query.id},
+    attributes: ['createdAt', 'updatedAt'],
+    include: [
+      {
+        model: webtoon,
+        as: 'webtoonid',
+        attributes: ['title', 'genre', 'image'],
+      },
+      {
+        model: user,
+        as: 'userid',
+        attributes: ['name'],
+      },
+    ],
   }).then(result => res.send(result));
 }
 

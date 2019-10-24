@@ -34,7 +34,7 @@ app.group("/api/v1", (router) => {
 
     // Webtoons
     router.get('/webtoon', WebtoonController.index) // 3, 15
-    router.get('/favourite', authenticated, WebtoonController.showFavourites) // 3, 15
+    router.get('/favourite', authenticated, WebtoonController.showFavourites) // 3, 18 Menggunakan query
     router.get('/user/:id/webtoons', authenticated, WebtoonController.showAlltoon) // 7, 20
     router.get('/webtoons/:title', WebtoonController.searchTitle) // 6, 19
     router.post('/user/:id/webtoon/:idwt', WebtoonController.store) // 8, 21

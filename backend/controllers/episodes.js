@@ -88,7 +88,7 @@ exports.showEpisodes = async (req, res) => {
     include: [
       {
         model: webtoons,
-        as: webtoon_id,
+        as: 'webtoonid',
         attributes: ['title'],
       }
     ]
